@@ -15,7 +15,29 @@ class FreeHelpServiceProvider extends ServiceProvider {
 * Remove the "target=_blank" attribute for all links.
 * @see https://github.com/freescout-helpdesk/freescout/issues/2914
 */
-$('[target="_blank"]').attr("target", null );
+/* $('[target="_blank"]').attr("target", null ); // i like external links to open in new window */
+
+function updateExternalLinks() {
+    document.querySelectorAll('a[href]').forEach(function(link) {
+        let href = link.getAttribute('href');
+
+        // Ignore links that are internal, anchor (`#`), or JavaScript actions
+        if (href.startsWith('#') || href.startsWith('javascript:') || href.includes(location.hostname)) {
+            return;
+        }
+
+        // Set target="_blank" and security attributes
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+    });
+}
+
+// Run immediately on page load
+updateExternalLinks();
+
+// Run every 3 seconds in case new links are dynamically added and to account for sidebar webhooks
+setInterval(updateExternalLinks, 3000);
+
 
 // Let's use better terminology.
 $('a[href*=whitelist]').text(function ( index, text ) {

@@ -2,7 +2,7 @@
 
 FreeHelp makes FreeScout look and feel more like Help Scout, adding many small quality-of-life improvements.
 
-- Don't open anything in new tabs/windows! [#2914](https://github.com/freescout-helpdesk/freescout/issues/2914)
+- Open external links in new windows
 - Shift-click checkboxes to select a range of conversations at once [#1312](https://github.com/freescout-helpdesk/freescout/issues/1312)
 - Convert Dropdown-type Custom Fields to Select2 inputs
 - Type `Escape` to close dropdowns, cancel editing conversation titles, and cancel editing a note
@@ -37,6 +37,10 @@ FreeHelp makes FreeScout look and feel more like Help Scout, adding many small q
 --------------------
 
 ## Changelog
+
+### 1.0.4 - TBD
+
+- Open external links in new windows. Also check every few seconds for new links that may have been loaded such as from sidebar addons.
 
 ### 1.0.3 on August 4, 2023
 
